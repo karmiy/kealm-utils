@@ -40,4 +40,3 @@ export const formatRemainTime = (time: { hours: number; minutes: number; seconds
 
     return hoursText + minutesText + secondsText;
 };
-console.log(1);

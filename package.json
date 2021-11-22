@@ -3,11 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "test": "ava",
-    "coverage": "nyc ava",
-    "t": "ts-node ./a.ts"
+    "test": "ava --tap | tap-nyan",
+    "coverage": "nyc ava"
   },
   "repository": {
     "type": "git",
@@ -41,16 +39,17 @@
   },
   "ava": {
     "extensions": {
-			"ts": "module"
-		},
-		"nonSemVerExperiments": {
-			"configurableModuleFormat": true
-		},
-		"nodeArguments": [
-			"--loader=ts-node/esm"
-		],
+      "ts": "module"
+    },
+    "nonSemVerExperiments": {
+      "configurableModuleFormat": true
+    },
+    "nodeArguments": [
+      "--loader=ts-node/esm",
+      "--experimental-specifier-resolution=node"
+    ],
     "require": [
-      "./test/helpers/setup-browser-env.cjs"
+      "./test/helpers/setup-browser-env.js"
     ],
     "files": [
       "src/**/*.spec.ts"

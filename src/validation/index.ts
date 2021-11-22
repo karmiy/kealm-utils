@@ -117,7 +117,7 @@ const ID_CARD_REMAINDER = [1, 0, 'X', 9, 8, 7, 6, 5, 4, 3, 2];
  * @description 校验身份证
  * @param id
  */
-export const validateIdCard = (id?: string) => {
+export const isIdCard = (id?: string) => {
     if (!id) return false;
 
     if (id.length !== 18) return false;

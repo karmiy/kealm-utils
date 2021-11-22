@@ -265,10 +265,13 @@ export const decode = (_base64Str: string): string => {
     return value;
 };
 
-export const urlSafeB64encode = (input: string): string => {
+// base64 传统编码中会出现 +, / 两个会被 url 直接转义的符号
+// 因此如果希望通过 url 传输这些编码字符串，需要先做传统 base64 编码
+// 随后将 + 和 / 分别替换为 - _ 两个字符，在接收端则做相反的动作解码
+export const urlSafeB64Encode = (input: string): string => {
     return encode(input).replace(/\+/g, '-').replace(/\//g, '_');
 };
 
-export const urlSafeB64decode = (input: string): string => {
+export const urlSafeB64Decode = (input: string): string => {
     return decode(input.replace(/\-/g, '+').replace(/\_/g, '/'));
 };
