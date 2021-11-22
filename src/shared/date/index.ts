@@ -4,11 +4,11 @@
  * @param duration
  * @param nowDate
  */
-export function getRemainTime(
+export const getRemainTime = (
     createDate: Date | string | number,
     duration: number,
     nowDate?: Date | string | number,
-) {
+) => {
     const startDate = new Date(createDate);
     const endDate = new Date(startDate.getTime() + duration);
     const now = nowDate ? new Date(nowDate) : new Date();
@@ -25,13 +25,13 @@ export function getRemainTime(
     const seconds = Math.floor((deltaTime / 1000) % 60);
 
     return { hours, minutes, seconds };
-}
+};
 
 /**
  * @description 格式化剩余时间
  * @param time
  */
-export function formatRemainTime(time: { hours: number; minutes: number; seconds: number }) {
+export const formatRemainTime = (time: { hours: number; minutes: number; seconds: number }) => {
     const { hours, minutes, seconds } = time;
 
     const hoursText = hours === 0 ? '' : `${hours}时`;
@@ -39,5 +39,5 @@ export function formatRemainTime(time: { hours: number; minutes: number; seconds
     const secondsText = `${seconds}秒`;
 
     return hoursText + minutesText + secondsText;
-}
+};
 console.log(1);

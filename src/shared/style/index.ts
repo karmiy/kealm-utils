@@ -1,4 +1,4 @@
-import { isArray, isEmpty, isString } from './validation';
+import { isArray, isEmpty, isString } from '../validation';
 
 type ClassNamesItem = string | Record<string, unknown> | undefined | null | ClassNamesParams;
 type ClassNamesParams = Array<ClassNamesItem>;
@@ -7,7 +7,7 @@ type ClassNamesParams = Array<ClassNamesItem>;
  * @description 构造 className
  * @param params 合并项
  */
-export const classnames = function (...params: ClassNamesParams) {
+export const classnames = (...params: ClassNamesParams) => {
     const classNames: string[] = [];
     params.forEach(item => {
         if (isEmpty(item)) return;
