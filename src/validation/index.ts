@@ -19,6 +19,15 @@ export const isBoolean = (value: any): value is boolean => {
 };
 
 /**
+ * @description 是否为 null
+ * @param value: any
+ * @returns {boolean}
+ */
+export const isNull = (value: any): value is string => {
+    return toString.call(value) === '[object Null]';
+};
+
+/**
  * @description 是否为对象
  * @param value: any
  * @returns {boolean}
@@ -81,7 +90,7 @@ export const isInteger =
  * @param value
  */
 export const isEmpty = (value: any): value is undefined | null => {
-    return value === undefined || value === null;
+    return typeof value === 'undefined' || isNull(value);
 };
 
 /**

@@ -6,6 +6,7 @@ import {
     isFunction,
     isIdCard,
     isInteger,
+    isNull,
     isNumber,
     isObject,
     isPlainObject,
@@ -20,6 +21,11 @@ test('validation - isBoolean', t => {
 
 test('validation - isString', t => {
     t.truthy(isString('true'));
+});
+
+test('validation - isNull', t => {
+    t.truthy(isNull(null));
+    t.falsy(isNull(undefined));
 });
 
 test('validation - isObject', t => {
@@ -49,7 +55,9 @@ test('validation - isInteger', t => {
 test('validation - isEmpty', t => {
     t.truthy(isEmpty(null));
     t.truthy(isEmpty(undefined));
-    t.falsy(isEmpty(1));
+    t.falsy(isEmpty(0));
+    t.falsy(isEmpty(''));
+    t.falsy(isEmpty([]));
 });
 
 test('validation - isPlainObject', t => {
