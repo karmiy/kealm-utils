@@ -118,17 +118,34 @@ export const isOppoR17 = () => {
     return SCREEN_HEIGHT === 780 && SCREEN_WIDTH === 360;
 };
 
+const NOTCH_CONFIG = [
+    {
+        w: 375, // X
+        h: 812,
+    },
+    {
+        w: 414, // XR
+        h: 896,
+    },
+    {
+        w: 390, // 12pro
+        h: 844,
+    },
+    {
+        w: 428, // 12pro max
+        h: 926,
+    },
+];
+
 /**
- * 刘海屏
+ * @description 刘海屏
  */
-export function isNotch(): boolean {
-    return (
-        isIPhoneXSeries() ||
-        isIPhoneXMax() ||
-        isIPhone12() ||
-        isIPhone12Pro() ||
-        isIPhone12ProMax() ||
-        isXiaoMi8() ||
-        isOppoR17()
-    );
-}
+export const isNotch = () => {
+    const windowWidth = window.screen.width;
+    const windowHeight = window.screen.height;
+
+    const isiOSFullScreen =
+        NOTCH_CONFIG.findIndex(item => item.w === windowWidth && item.h === windowHeight) > -1;
+    const isA = windowHeight / windowWidth > 1.96;
+    return isiOSFullScreen || isA;
+};
